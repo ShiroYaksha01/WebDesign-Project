@@ -1,0 +1,256 @@
+/* Base styles for the chapter reader page */
+.chapter-reader-page {
+    padding: 2rem 0;
+}
+
+/* Top and bottom chapter navigation bars */
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chapter-navigation.bottom-nav {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    /* On larger screens, space them evenly */
+    justify-content: space-around; /* Changed for consistent spacing */
+}
+
+/* Chapter title in the navigation bar */
+.chapter-title {
+    font-size: 1.8rem;
+    color: #333;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Navigation buttons (Prev/Next/Return) */
+.nav-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevent buttons from shrinking on flex containers */
+}
+
+.nav-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#returnToNovelBtn {
+    background-color: #5cb85c;
+}
+
+#returnToNovelBtn:hover {
+    background-color: #4cae4c;
+}
+
+/* Container for reader settings controls */
+.reader-settings {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 20px; /* Row and column gap */
+}
+
+.reader-settings span {
+    font-weight: bold;
+    color: #555;
+}
+
+.setting-display-value {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    min-width: 40px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.setting-button {
+    background-color: #eee;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.setting-button:hover {
+    background-color: #e0e0e0;
+}
+
+.setting-button.active {
+    background-color: #7cb342;
+    color: #fff;
+    border-color: #7cb342;
+}
+
+.setting-button.active:hover {
+    background-color: #689f38;
+}
+
+/* Main content area for the chapter text */
+.chapter-content {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    min-height: 400px;
+    line-height: 1.8;
+    color: #333;
+    font-size: 18px; /* Base font size */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.chapter-content p {
+    margin: 0 0 1.2em 0;
+}
+
+.chapter-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Theme and Font Family Styles */
+.chapter-content.bg-light { background-color: #ffffff; color: #333333; }
+.chapter-content.bg-dark { background-color: #212121; color: #e0e0e0; }
+.chapter-content.bg-sepia { background-color: #fbf0d9; color: #5b4636; }
+.chapter-content.font-serif { font-family: 'Georgia', serif; }
+.chapter-content.font-sans-serif { font-family: 'Helvetica Neue', Arial, sans-serif; }
+.chapter-content.font-monospace { font-family: 'Courier New', monospace; }
+
+
+/* ======================================================= */
+/* ===========      RESPONSIVE DESIGN      =============== */
+/* ======================================================= */
+
+/* For Tablets and smaller devices (~768px and below) */
+@media (max-width: 768px) {
+    .chapter-reader-page {
+        padding: 1rem 0; /* Reduce vertical padding */
+    }
+
+    /* --- Navigation Bar Adjustments --- */
+    .chapter-navigation {
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center;
+        gap: 15px; /* Add space between wrapped items */
+        padding: 15px;
+    }
+
+    .chapter-title {
+        order: -1; /* Move title to be the first item */
+        width: 100%; /* Make title take the full width on its own line */
+        margin: 0 0 10px 0; /* Adjust margin for its new position */
+        font-size: 1.5rem;
+        white-space: normal; /* Allow title to wrap if it's long */
+    }
+
+    .nav-button {
+        flex-grow: 1; /* Allow Prev/Next buttons to fill the space */
+        flex-basis: 120px; /* Give them a base width before growing */
+        padding: 12px 10px; /* Make tap targets taller */
+    }
+
+    .chapter-navigation.bottom-nav {
+        /* Keep buttons in a row on smaller screens */
+        flex-direction: row;
+        justify-content: space-between; /* Space out the buttons */
+        flex-wrap: wrap; /* Allow wrapping if space is extremely tight */
+    }
+
+    /* Ensure buttons in bottom nav have some flexibility but don't become too small */
+    .chapter-navigation.bottom-nav .nav-button {
+        flex-grow: 1; /* Allow them to grow and take available space */
+        min-width: 100px; /* Minimum width to ensure readability */
+        max-width: 30%; /* Limit their maximum width to ensure three fit, rough estimate */
+    }
+
+
+    /* --- Reader Settings Adjustments --- */
+    .reader-settings {
+        flex-direction: column; /* Stack setting groups vertically */
+        align-items: stretch; /* Make items take full width */
+        gap: 20px; /* Increase space between setting groups */
+    }
+
+    .reader-settings > span {
+        text-align: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #eee;
+        margin: 0;
+    }
+    
+    .reader-settings > span[style] {
+        margin-left: 0 !important; /* Override inline style */
+    }
+
+    /* --- Content Area Adjustments --- */
+    .chapter-content {
+        padding: 20px 15px; /* Reduce padding for more text space */
+        font-size: 17px; /* Slightly smaller font for mobile */
+    }
+}
+
+/* For small phones (~480px and below) */
+@media (max-width: 480px) {
+    .chapter-title {
+        font-size: 1.3rem; /* Further reduce title size */
+    }
+
+    /* Make the top nav stack vertically on very small screens */
+    .chapter-navigation:not(.bottom-nav) {
+        flex-direction: column;
+    }
+
+    /* Adjust bottom nav buttons for very small screens */
+    .chapter-navigation.bottom-nav .nav-button {
+        font-size: 0.9em;
+        /* Allow them to stack if necessary, but try to keep them in a row */
+        flex-basis: auto; /* Revert to auto to allow flexible sizing */
+        min-width: unset; /* Remove min-width restriction */
+    }
+
+    .reader-settings {
+        padding: 15px 10px;
+    }
+    
+    .chapter-content {
+        padding: 15px 10px;
+        font-size: 16px; /* Ensure font is still very readable */
+        line-height: 1.7;
+    }
+}

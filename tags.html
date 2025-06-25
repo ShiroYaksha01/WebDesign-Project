@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags & Genres - NovelVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tags.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">NovelVerse</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tags.html">Tags/Genres</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar-container">
+                <input type="text" id="searchInput" placeholder="Search novels...">
+                <button id="searchButton">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container tags-page">
+        <section class="genres-list-section">
+            <h2>Explore Genres</h2>
+            <div class="genre-buttons">
+                <button class="genre-button active" data-genre="all">All Novels</button>
+                <button class="genre-button" data-genre="fantasy">Fantasy</button>
+                <button class="genre-button" data-genre="scifi">Sci-Fi</button>
+                <button class="genre-button" data-genre="romance">Romance</button>
+                <button class="genre-button" data-genre="mystery">Mystery</button>
+                <button class="genre-button" data-genre="action">Action</button>
+                <button class="genre-button" data-genre="isekai">Isekai</button>
+                <button class="genre-button" data-genre="xianxia">Xianxia</button>
+                <button class="genre-button" data-genre="gaming">Gaming</button>
+                <button class="genre-button" data-genre="comedy">Comedy</button>
+                </div>
+        </section>
+
+        <section class="filtered-novels-section">
+            <h2>Novels by <span id="currentGenre">All Novels</span></h2>
+            <div class="sort-options">
+                <span>Sort by:</span>
+                <button class="sort-button active" data-sort="name">Name</button>
+                <button class="sort-button" data-sort="latest">Latest Release</button>
+                <button class="sort-button" data-sort="popularity">Popularity</button>
+            </div>
+            <div class="novel-grid" id="filteredNovelsGrid">
+                </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 NovelVerse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="tags-script.js"></script>
+</body>
+</html>

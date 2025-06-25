@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel Detail - NovelVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="novel-detail.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">NovelVerse</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tags.html">Tags/Genres</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar-container">
+                <input type="text" id="searchInput" placeholder="Search novels...">
+                <button id="searchButton">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container novel-detail-page">
+        <div class="novel-header">
+            <img id="novelCover" src="" alt="Novel Cover" class="novel-detail-cover">
+            <div class="novel-header-info">
+                <h1 id="novelTitle" class="novel-detail-title"></h1>
+                <p id="novelAuthor" class="novel-detail-author"></p>
+                <div id="novelTags" class="novel-detail-tags">
+                    </div>
+                <p id="novelStatus" class="novel-detail-status"></p>
+            </div>
+        </div>
+
+        <section class="novel-synopsis-section">
+            <h2>Synopsis</h2>
+            <p id="novelSynopsis" class="novel-synopsis"></p>
+        </section>
+
+        <section class="novel-chapters-section">
+            <h2>Chapters</h2>
+            <div class="chapter-list">
+                <ul id="chapterList">
+                    </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 NovelVerse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="novel-script.js"></script>
+</body>
+</html>

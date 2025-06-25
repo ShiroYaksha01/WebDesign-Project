@@ -1,0 +1,464 @@
+/* General Body and Container */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Default background color */
+    background-color: #f4f7f6;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background changes */
+}
+
+/* New classes for body background themes */
+body.bg-light { background-color: #f4f7f6; color: #333333; }
+body.bg-dark { background-color: #212121; color: #e0e0e0; }
+body.bg-sepia { background-color: #fbf0d9; color: #5b4636; }
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.main-header {
+    background-color: #34495e;
+    color: #fff;
+    padding: 15px 0;
+    border-bottom: 5px solid #7cb342;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative; /* Added for dropdown positioning */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.logo {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.logo a:hover {
+    color: #aed581; /* Lighter green on hover */
+}
+
+/* Main Navigation */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.2s ease;
+}
+
+.main-nav ul li a:hover {
+    color: #aed581;
+}
+
+/* Right side of the header (Search Bar and Menu Button) */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between search and menu button */
+}
+
+/* Search Bar */
+.search-bar-container {
+    display: flex;
+    /* margin-left: 20px; Removed, now handled by gap in header-right */
+}
+
+.search-bar-container input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.search-bar-container button {
+    background-color: #7cb342;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.search-bar-container button:hover {
+    background-color: #689f38;
+}
+
+/* New Menu Button for Reader Settings */
+.menu-button {
+    background-color: #7cb342;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.2em; /* Larger icon */
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-button:hover {
+    background-color: #689f38;
+}
+
+/* Reader Settings Dropdown */
+.reader-settings-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the header */
+    right: 20px; /* Align to the right */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    z-index: 1000; /* Ensure it's above other content */
+    display: none; /* Hidden by default, toggled by JS */
+    flex-direction: column;
+    gap: 15px;
+    min-width: 250px;
+}
+
+.reader-settings-dropdown.active {
+    display: flex; /* Show when active */
+}
+
+.reader-settings-dropdown .setting-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 8px; /* Space between items in a group */
+}
+
+.reader-settings-dropdown .setting-group span {
+    font-weight: bold;
+    color: #555;
+    flex-basis: 100%; /* Make label take full width */
+    margin-bottom: 5px; /* Space below label */
+}
+
+.reader-settings-dropdown .setting-button {
+    background-color: #eee;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.reader-settings-dropdown .setting-button:hover {
+    background-color: #e0e0e0;
+}
+
+.reader-settings-dropdown .setting-button.active {
+    background-color: #7cb342;
+    color: #fff;
+    border-color: #7cb342;
+}
+
+.reader-settings-dropdown .setting-button.active:hover {
+    background-color: #689f38;
+}
+
+.reader-settings-dropdown .setting-display-value {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    min-width: 40px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+
+/* Main Content Sections */
+main {
+    padding: 30px 0;
+}
+
+.novel-section {
+    margin-bottom: 30px;
+    background-color: #fff; /* Keep this white or a light color for novel sections */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.novel-section h2 {
+    font-size: 2.2em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.novel-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #7cb342;
+    border-radius: 5px;
+}
+
+.novel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    justify-content: center;
+}
+
+.novel-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.novel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.novel-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.novel-cover {
+    width: 100%;
+    height: 270px; /* Standard height for covers */
+    object-fit: cover; /* Ensures image covers area without distorting */
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.novel-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.novel-title {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 8px;
+    height: 3em; /* Fixed height for title to prevent layout shifts */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+}
+
+.novel-title a {
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.novel-title a:hover {
+    color: #7cb342;
+}
+
+.novel-author {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.novel-tags {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+.tag {
+    background-color: #e0e0e0;
+    color: #555;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    text-decoration: none;
+    white-space: nowrap; /* Prevent tags from breaking */
+}
+
+.tag:hover {
+    background-color: #d0d0d0;
+}
+
+.novel-status {
+    font-size: 0.9em;
+    color: #666;
+    font-weight: 500;
+}
+
+.novel-status strong {
+    color: #7cb342;
+}
+
+/* Footer */
+.main-footer {
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .container {
+        padding: 15px;
+    }
+    .main-header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .main-nav ul li {
+        margin: 0 10px 10px;
+    }
+    .header-right {
+        width: 100%;
+        margin-top: 15px;
+        justify-content: center;
+    }
+    .search-bar-container {
+        width: 80%;
+        margin-left: 0;
+    }
+    .search-bar-container input[type="text"] {
+        width: 70%;
+    }
+    .logo {
+        font-size: 2em;
+    }
+    .novel-section h2 {
+        font-size: 1.8em;
+    }
+    .novel-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    .novel-cover {
+        height: 220px; /* Adjust height for smaller cards */
+    }
+    .novel-title {
+        font-size: 1.2em;
+        height: auto; /* Allow more flexible height */
+        -webkit-line-clamp: 3;
+    }
+    .novel-info {
+        padding: 10px;
+    }
+    .novel-author, .novel-status {
+        font-size: 0.85em;
+    }
+    .tag {
+        font-size: 0.75em;
+        padding: 4px 8px;
+    }
+
+    /* Adjust dropdown for smaller screens */
+    .reader-settings-dropdown {
+        position: static; /* Allow it to flow naturally */
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 10px;
+        margin-top: 15px;
+    }
+    .reader-settings-dropdown .setting-group {
+        flex-direction: column; /* Stack setting groups vertically */
+        align-items: stretch; /* Make items take full width */
+        gap: 10px;
+    }
+    .reader-settings-dropdown .setting-group span {
+        text-align: center;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+@media (max-width: 576px) {
+    .novel-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+    .novel-cover {
+        height: 190px;
+    }
+    .search-bar-container input[type="text"] {
+        width: 60%;
+    }
+    .search-bar-container, .menu-button {
+        flex-grow: 1; /* Allow them to share space */
+    }
+    .header-right {
+        flex-wrap: wrap; /* Allow search and menu button to wrap */
+        gap: 10px;
+    }
+    .search-bar-container {
+        width: 100%;
+    }
+    .search-bar-container input[type="text"] {
+        width: calc(100% - 70px); /* Adjust width to make room for button */
+    }
+    .menu-button {
+        width: 100%;
+    }
+}

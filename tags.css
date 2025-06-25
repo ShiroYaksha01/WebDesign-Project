@@ -1,0 +1,146 @@
+.tags-page .genres-list-section,
+.tags-page .filtered-novels-section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 2rem;
+}
+
+.tags-page h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.tags-page h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #7cb342;
+    border-radius: 5px;
+}
+
+.genre-buttons {
+    text-align: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex; /* For better button layout */
+    gap: 10px; /* Space between buttons */
+}
+
+.genre-button {
+    background-color: #eee;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap; /* Prevent buttons from breaking words */
+}
+
+.genre-button:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.genre-button.active {
+    background-color: #7cb342;
+    color: #fff;
+    border-color: #7cb342;
+    font-weight: bold;
+}
+
+.genre-button.active:hover {
+    background-color: #689f38;
+    border-color: #689f38;
+}
+
+.filtered-novels-section h2 {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+.filtered-novels-section h2::after {
+    left: 0;
+    transform: none;
+}
+
+.sort-options {
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #666;
+}
+
+.sort-options span {
+    margin-right: 10px;
+}
+
+.sort-button {
+    background-color: transparent;
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.sort-button:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.sort-button.active {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
+    font-weight: bold;
+}
+
+.sort-button.active:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* Hide novels that don't match the active filter */
+.novel-card.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .genre-buttons {
+        gap: 8px;
+    }
+    .genre-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .filtered-novels-section h2 {
+        text-align: center;
+    }
+    .filtered-novels-section h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .sort-options {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .sort-button {
+        margin-top: 5px;
+    }
+}

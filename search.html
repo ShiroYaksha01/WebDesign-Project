@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - NovelVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tags.css">
+    <link rel="stylesheet" href="search.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">NovelVerse</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tags.html">Tags/Genres</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar-container">
+                <input type="text" id="searchInput" placeholder="Search novels...">
+                <button id="searchButton">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container search-results-page">
+        <section class="search-info-section">
+            <h2 id="searchResultsHeading">Search Results for ""</h2>
+            <div class="sort-options">
+                <span>Sort by:</span>
+                <button class="sort-button active" data-sort="name">Name</button>
+                <button class="sort-button" data-sort="latest">Latest Release</button>
+                <button class="sort-button" data-sort="popularity">Popularity</button>
+            </div>
+        </section>
+
+        <section class="novel-results-section">
+            <div class="novel-grid" id="searchResultsGrid">
+                </div>
+             <p id="noResultsMessage" style="display: none; text-align: center; font-size: 1.2em; color: #777; margin-top: 30px;">No novels found matching your search.</p>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 NovelVerse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="search-script.js"></script>
+</body>
+</html> 

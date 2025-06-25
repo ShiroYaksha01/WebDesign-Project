@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovelVerse - Read Your Next Story</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">NovelVerse</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tags.html">Tags/Genres</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar-container">
+                <input type="text" id="searchInput" placeholder="Search novels...">
+                <button id="searchButton">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="novel-section latest-releases">
+            <h2>Latest Releases</h2>
+            <div class="novel-grid" id="latestNovelsGrid">
+                </div>
+        </section>
+
+        <section class="novel-section most-popular">
+            <h2>Most Popular</h2>
+            <div class="novel-grid" id="popularNovelsGrid">
+                </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 NovelVerse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
