@@ -17,7 +17,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="tags.html">Tags/Genres</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
                 </ul>
             </nav>
             <div class="search-bar-container">
@@ -35,8 +35,11 @@
             <button id="nextChapter" class="nav-button">Next &raquo;</button>
         </nav>
 
-        <div class="reader-settings">
-            <span>Background:</span>
+        <button id="toggleSettingsBtn" class="nav-button settings-toggle-btn">
+            <span class="icon">&#9660;</span> Reader Settings
+        </button>
+
+        <div class="reader-settings hidden-settings"> <span>Background:</span>
             <button class="setting-button active" data-bg="light">Light</button>
             <button class="setting-button" data-bg="dark">Dark</button>
             <button class="setting-button" data-bg="sepia">Sepia</button>
@@ -50,8 +53,7 @@
             <button class="setting-button active" data-font-family="serif">Serif</button>
             <button class="setting-button" data-font-family="sans-serif">Sans-serif</button>
             <button class="setting-button" data-font-family="monospace">Monospace</button>
-            
-            </div>
+        </div>
 
         <div id="chapterContent" class="chapter-content">
             <p>Loading chapter...</p>

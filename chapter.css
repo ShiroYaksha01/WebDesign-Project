@@ -6,7 +6,7 @@
 /* Top and bottom chapter navigation bars */
 .chapter-navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Default for top nav */
     align-items: center;
     margin-bottom: 2rem;
     background-color: #fff;
@@ -18,9 +18,9 @@
 .chapter-navigation.bottom-nav {
     margin-top: 2rem;
     margin-bottom: 0;
-    /* On larger screens, space them evenly */
-    justify-content: space-around; /* Changed for consistent spacing */
+    justify-content: space-evenly; /* Use space-evenly for consistent spacing across 3 items */
 }
+
 
 /* Chapter title in the navigation bar */
 .chapter-title {
@@ -45,7 +45,7 @@
     font-size: 1em;
     transition: background-color 0.2s ease, transform 0.2s ease;
     white-space: nowrap;
-    flex-shrink: 0; /* Prevent buttons from shrinking on flex containers */
+    flex-shrink: 0; /* Prevent buttons from shrinking too much by default */
 }
 
 .nav-button:hover {
@@ -67,6 +67,33 @@
     background-color: #4cae4c;
 }
 
+/* --- NEW: Toggle Button for Settings --- */
+.settings-toggle-btn {
+    background-color: #6c757d; /* A neutral color for settings toggle */
+    color: white;
+    width: 100%; /* Make it span full width */
+    margin-bottom: 1rem; /* Space below the button */
+    display: flex; /* Allow icon and text to be side-by-side */
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+.settings-toggle-btn:hover {
+    background-color: #5a6268;
+    transform: none; /* No translateY for this button */
+}
+
+.settings-toggle-btn .icon {
+    transition: transform 0.3s ease; /* Smooth rotation for the icon */
+    font-size: 1.2em; /* Make icon slightly larger */
+}
+
+.settings-toggle-btn.active .icon {
+    transform: rotate(180deg); /* Rotate icon when settings are open */
+}
+
+
 /* Container for reader settings controls */
 .reader-settings {
     background-color: #fff;
@@ -79,6 +106,20 @@
     justify-content: center;
     align-items: center;
     gap: 10px 20px; /* Row and column gap */
+
+    /* --- NEW: Styles for toggle functionality --- */
+    max-height: 630px; /* Max height when open (should be larger than actual content) */
+    overflow: hidden; /* Hide overflow when collapsing */
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out, margin-bottom 0.3s ease-out; /* Smooth transition */
+}
+
+.reader-settings.hidden-settings {
+    max-height: 0; /* Collapse the height */
+    padding-top: 0; /* Remove padding when collapsed */
+    padding-bottom: 0; /* Remove padding when collapsed */
+    margin-bottom: 0; /* Remove margin when collapsed */
+    opacity: 0; /* Fade out content */
+    pointer-events: none; /* Prevent interaction when hidden */
 }
 
 .reader-settings span {
@@ -153,9 +194,6 @@
 .chapter-content.font-monospace { font-family: 'Courier New', monospace; }
 
 
-/* ======================================================= */
-/* ===========      RESPONSIVE DESIGN      =============== */
-/* ======================================================= */
 
 /* For Tablets and smaller devices (~768px and below) */
 @media (max-width: 768px) {
@@ -163,10 +201,11 @@
         padding: 1rem 0; /* Reduce vertical padding */
     }
 
-    /* --- Navigation Bar Adjustments --- */
+    /* --- Navigation Bar Adjustments (TOP and BOTTOM) --- */
     .chapter-navigation {
-        flex-wrap: wrap; /* Allow items to wrap */
-        justify-content: center;
+        /* Keep as row, but allow wrapping if content gets too wide */
+        flex-wrap: wrap; 
+        justify-content: center; /* Center items when wrapped */
         gap: 15px; /* Add space between wrapped items */
         padding: 15px;
     }
@@ -180,25 +219,21 @@
     }
 
     .nav-button {
-        flex-grow: 1; /* Allow Prev/Next buttons to fill the space */
-        flex-basis: 120px; /* Give them a base width before growing */
+        flex-grow: 1; /* Allow buttons to grow and fill available space */
+        flex-basis: auto; /* Allow the browser to determine base size naturally */
+        min-width: unset; /* Remove min-width restriction as we will allow shrinking */
+        max-width: unset; /* Remove any max-width restrictions */
         padding: 12px 10px; /* Make tap targets taller */
+        /* Key for staying in one row: Allow buttons to shrink as needed */
+        flex-shrink: 1; /* Allow shrinking if space is tight */
+        font-size: 0.9em; /* Slightly smaller font to fit more */
     }
 
     .chapter-navigation.bottom-nav {
-        /* Keep buttons in a row on smaller screens */
-        flex-direction: row;
-        justify-content: space-between; /* Space out the buttons */
-        flex-wrap: wrap; /* Allow wrapping if space is extremely tight */
+        flex-direction: row; /* Ensure they stay in a row */
+        justify-content: space-evenly; /* Space out the 3 buttons evenly */
+        gap: 5px; /* Smaller gap for the bottom buttons to save space */
     }
-
-    /* Ensure buttons in bottom nav have some flexibility but don't become too small */
-    .chapter-navigation.bottom-nav .nav-button {
-        flex-grow: 1; /* Allow them to grow and take available space */
-        min-width: 100px; /* Minimum width to ensure readability */
-        max-width: 30%; /* Limit their maximum width to ensure three fit, rough estimate */
-    }
-
 
     /* --- Reader Settings Adjustments --- */
     .reader-settings {
@@ -231,17 +266,21 @@
         font-size: 1.3rem; /* Further reduce title size */
     }
 
-    /* Make the top nav stack vertically on very small screens */
-    .chapter-navigation:not(.bottom-nav) {
-        flex-direction: column;
+    /* Make ALL navigation bars stay in a single row, even on smallest screens */
+    .chapter-navigation { /* Applies to both top and bottom navs now */
+        flex-direction: row; /* Explicitly keep in a row */
+        justify-content: space-evenly; /* Evenly space the items */
+        align-items: center; /* Vertically align them */
+        gap: 5px; /* Minimal gap between buttons */
+        padding: 10px; /* Reduce padding to save space */
     }
 
-    /* Adjust bottom nav buttons for very small screens */
-    .chapter-navigation.bottom-nav .nav-button {
-        font-size: 0.9em;
-        /* Allow them to stack if necessary, but try to keep them in a row */
-        flex-basis: auto; /* Revert to auto to allow flexible sizing */
-        min-width: unset; /* Remove min-width restriction */
+    /* Ensure buttons are highly flexible to fit in a single row */
+    .chapter-navigation .nav-button {
+        padding: 8px 5px; /* Smaller padding */
+        font-size: 0.8em; /* Smaller font size to fit text */
+        flex-shrink: 1; /* Allow significant shrinking */
+        min-width: 20px; /* Allow them to shrink quite a bit, but not disappear */
     }
 
     .reader-settings {
